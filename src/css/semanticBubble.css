@@ -1,0 +1,26 @@
+#semantic-bubble {
+    width: 100%;
+    height: 100%;
+    display: none;
+    /*font-size: 12px;*/
+    overflow-y: hidden;
+    overflow-x: auto;
+    /*white-space: nowrap;*/
+}
+
+#semantic-bubble-container {
+    width: 89.6%;
+    height: 100%;
+    float: left;
+    display: block;
+    font-size: 12px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#semantic-legend {
+    width: 10%;
+    height: 100%;
+    display: block;
+    font-size: 12px;
+}

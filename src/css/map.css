@@ -1,0 +1,394 @@
+.hovertrip-image {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #f0f0f0;
+}
+
+.hovertrip-container {
+    width: 300px;
+    height: auto;
+    background-color: #ffffff;
+    border: 2px solid #f0f0f0;
+    overflow: hidden;
+}
+
+.currentTripTooltip {
+    width: 300px;
+    height: auto;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #f0f0f0;
+    font-size: 12px;
+    line-height: 1.15;
+    white-space: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: justify;
+}
+
+.pointTooltip {
+    width: 200px;
+    height: auto;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    font-size: 0.75em;
+    line-height: 1.15;
+    white-space: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: justify;
+}
+
+/* arrow pointer of leaflet tooltip */
+.leaflet-tooltip-left.currentTripTooltip::before {
+    border-left-color: rgba(255, 255, 255, 1);
+  }
+  .leaflet-tooltip-right.currentTripTooltip::before {
+    border-right-color: rgba(255, 255, 255, 1);
+  }
+
+  .narrative-cluster {
+    height: 40px;
+    color: #ffffff;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* all minimap elements */
+.minimap-elements {
+    border: 3px solid #fff;
+    width: 100%;
+    height: 30%;
+    cursor: pointer;
+    position: relative;
+}
+
+.minimap-date {
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
+    background: none;
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 1000;
+}
+
+.legend {
+    background: rgba(68, 68, 68, 0.8);
+    padding: 5px;
+    border: 2px solid #525252;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 14px;
+    color: #fff;
+}
+
+.cells-number {
+    background: none;
+    z-index: 1000;
+    border: none;
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* layer manager */
+#layer-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid #bdbdbd;
+    color: #252525;
+    z-index: 1000;
+    background: #ffffff;
+    bottom: 41%;
+    left: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+#layer-container {
+    padding: 5px;
+    width: auto;
+    height: auto;
+    min-width: 30px;
+    min-height: 30px;
+    display: none;
+    font-size: 12px;
+    position: absolute;
+    z-index: 2000;
+    bottom: 41%;
+    left: 10px;
+    border-radius: 5px;
+    border: 2px solid #bdbdbd;
+    background: #ffffff;
+}
+
+.removeLayer-btn {
+    padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: red;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* equalizer chart */
+
+
+#equalizer-minimap {
+    top: 35px;
+    right: 205px;
+    width: 25%;
+    height: 20%;
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #252525;
+    z-index: 2000;
+}
+
+#equalizer {
+    top: 35px;
+    position: absolute;
+    z-index: 1000;
+    right: 5px;
+    width: 200px;
+    height: auto;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    border: 2px solid #525252;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    display: none;
+}
+
+/* switch map button */ 
+#switchMap-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid #bdbdbd;
+    color: #252525;
+    z-index: 1000;
+    background: #ffffff;
+    bottom: 0px;
+    left: 50%;
+    cursor: pointer;
+    outline: none;
+}
+
+/* trip detail button */
+#trip-detail-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #525252;
+    color: #f0f0f0;
+    z-index: 1000;
+    background: #525252;
+    top: 2px;
+    left: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+#trip-detail-container {
+    padding: 5px;
+    width: 200px;
+    height: auto;
+    font-size: 12px;
+    position: absolute;
+    top: 110px;
+    left: 5px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    border: 2px solid #525252;
+    /*display: none;*/
+}
+#trip-detail-date {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+}
+#trip-detail-street {
+    font-size: 14px;
+    width: 100%;
+}
+#trip-detail-time {
+    font-size: 14px;
+    width: 100%;
+    font-weight: bold;
+}
+
+#trip-detail-map {
+    width: 100%;
+    height: 120px;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+#trip-detail-narrative {
+    width: 100%;
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-top: 5px;
+    background: #525252;
+    padding: 5px;
+    text-justify: auto;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* trip wordcloud */
+#trip-wordcloud {
+    top: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    z-index: 2000;
+    left: 260px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* compare map button */
+#compare-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #525252;
+    color: #f0f0f0;
+    z-index: 1000;
+    background: #525252;
+    top: 35px;
+    left: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* compare map button */
+#equalizer-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #525252;
+    color: #f0f0f0;
+    z-index: 1000;
+    background: #525252;
+    top: 78px;
+    left: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* add this to street map */
+.leaflet-tooltip-left.customTooltip::before {
+    border-left-color: rgba(0,0,0,0.25);
+}
+
+.leaflet-tooltip-right.customTooltip::before {
+    border-left-color: rgba(0,0,0,0.25);
+}
+
+.customTooltip {
+    /*background: rgb(235, 235, 235);*/
+    /*background: rgba(235, 235, 235, 0.81);*/
+    background: #4cff00;
+	background-clip: padding-box;
+	border-color: #777;
+    border-color: rgba(0,0,0,0.25);
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 4px;
+	color: #111;
+	display: block;
+	font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 1px 6px;
+	position: absolute;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	pointer-events: none;
+	white-space: nowrap;
+    z-index: 6;
+}
+
+.streetNameTooltip {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-color: #525252;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 4px;
+    display: block;
+    font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 1px 6px;
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 6;
+}
+
+#addpoint-btn {
+    font-size: 12px;
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #525252;
+    color: #f0f0f0;
+    z-index: 1000;
+    background: #525252;
+    top: 36px;
+    right: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+#update-point-btn {
+    font-size: 12px;
+    width: auto;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    color: #525252;
+    background: #f0f0f0;
+    cursor: pointer;
+    outline: none;
+}

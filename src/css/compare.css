@@ -1,0 +1,227 @@
+#compare-modal {
+    z-index: 5000;
+}
+
+#compare-modal-header {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+}
+#compare-modal-body {
+    font-size: 12px;
+    /*padding: 5px;*/
+}
+
+#compare-map-btn {
+    color: red;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#compare-streetview-btn {
+    color: #000;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#compare-mode {
+    width: 100%;
+    height: auto;
+    text-align: right;
+}
+
+#compare-map {
+    width: 97%;
+    height: 200px;
+    display: block;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#compare-gsv {
+    width: 97%;
+    height: 200px;
+    display: block;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#compare-sdps {
+    width: 100%;
+    height: 480px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.compare-point-container {
+    width: 100%;
+    height: 130px;
+    background: #f0f0f0;
+    position: relative;
+    border: none;
+    font-size: 12px;
+}
+/* date comprision point */
+.compare-point-date {
+    font-weight: bold;
+    background-color: #e0e0e0;
+    height: 20px;
+    width: 100%;
+}
+.compare-point-image {
+    width: 100%;
+}
+
+.compare-i {
+    width: 100%;
+    height: 100%;
+}
+
+.compare-point-imgleft {
+    width: 48%;
+    height: 100%;
+    float: left;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.compare-point-imgright {
+    width: 50%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.compare-point-slider {
+    width: 100%;
+    height: 5px;
+    background: #000;
+}
+
+.compare-slider {
+    -webkit-appearance: none;
+    width: 90% !important;
+    height: 15px;
+    background: #e0e0e0;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    float: left;
+}
+
+.compare-slider:hover {
+    opacity: 1;
+}
+
+.compare-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #1a1a1a;
+    cursor: col-resize;
+}
+
+.compare-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #1a1a1a;
+    cursor: col-resize;
+}
+
+.compare-leftright-btn {
+    width: 5%;
+    height: 15px;
+    background: #1a1a1a;
+    color: #fff;
+    float: left;
+    padding: 0px;
+    font-size: 12px;
+}
+
+.compare-keywords {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+.compare-narrative-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid #08306b;
+    color: #f8e8e8;
+    z-index: 2000;
+    background: #08519c;
+    cursor: pointer;
+    outline: none;
+}
+
+.compare-slider {
+    -webkit-appearance: none;
+      width: 97.5% !important;
+      height: 20px;
+      background: #7fcdbb;
+      outline: none;
+      opacity: 1;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+      margin-top: 5px;
+      margin-right: 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+  }
+  
+  .compare-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+      border: none;
+      height: 24px;
+      width: 24px;
+      background: goldenrod;
+      background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+      margin-top: -3px;
+      border-radius: 0 !important;
+    /*
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: goldenrod;
+    background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+    cursor: col-resize;
+    z-index: 5000;*/
+  }
+  
+  .compare-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+      border: none;
+      height: 24px;
+      width: 24px;
+      background: goldenrod;
+      background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+      margin-top: -3px;
+      border-radius: 0 !important;
+    /*
+    width: 15px;
+    height: 15px;
+    background: goldenrod;
+    background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+    cursor: col-resize;
+    z-index: 5000;*/
+  }

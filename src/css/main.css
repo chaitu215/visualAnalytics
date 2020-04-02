@@ -1,0 +1,368 @@
+/*@import url('https://fonts.googleapis.com/css?family=Lato');*/
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    /*font-family: 'Lato', sans-serif;*/
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+/* navbar */
+.navbar {
+    min-height: 2% !important;
+    padding: 0;
+    background: #252525;
+    color: #f0f0f0;
+    /*border-bottom: solid #e0e0e0 1px;*/
+}
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    height: 5%;
+    font-weight: normal;
+}
+
+#analysis-mode {
+    font-size: 0.85em;
+}
+
+/* loading screen */
+.loader-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    background: rgba(255, 255, 255, 0.6);
+}
+.loader {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #252525;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* main container */
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+/* data pane */
+.data {
+    width: 15%;
+    height: 100%;
+    padding: 2px;
+    float: left;
+    overflow: hidden;
+    /*border-right: 1px solid #000;*/
+}
+
+.data-header {
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    height: 20px;
+    background: #525252;
+    color: #f0f0f0;
+    overflow: hidden;
+    cursor: pointer;
+}
+.data-header.select {
+    background: #000;
+    color: #fff;
+}
+
+.data-body {
+    font-size: 12px;
+    width: 100%;
+    height: calc(100% - 20px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*border-bottom: 2px solid #e0e0e0;*/
+}
+
+/** dataset **/
+#dataset {
+    width: 100%;
+    height: auto;
+    max-height: 10%;
+    border: 2px solid #525252;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/*
+#dataset-content {
+    font-size: .85vw;
+}*/
+
+/* Spatial Units */
+#units {
+    margin-top: 5px;
+    width: 100%;
+    height: auto;
+    max-height: 10%;
+    border: 2px solid #525252;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
+#units-content {
+    padding-left: 5px;
+}
+
+#units-controller {
+    margin-top: 2px;
+    width: 100%;
+}
+#units-controller-header {
+    width: 40%;
+    float: left;
+    font-weight: bold;
+}
+#units-controller-value {
+    width: 35%;
+    float: left;
+    font-weight: normal;
+}
+#grid-distance {
+    width: 25% !important;
+    float: left;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 90% !important;
+    height: 15px;
+    background: #e0e0e0;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    float: left;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 15px;
+    background: #1a1a1a;
+    cursor: col-resize;
+}
+
+.slider::-moz-range-thumb {
+    width: 10px;
+    height: 15px;
+    background: #1a1a1a;
+    cursor: col-resize;
+}
+
+
+/** Region of Interest **/
+#rois {
+    margin-top: 5px;
+    width: 100%;
+    height: auto;
+    max-height: 45%; /* or 25 */
+    border: 2px solid #525252;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.list-container {
+    width: 100%;
+    padding-left: 5px;
+    height: auto;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    overflow: auto;
+    background: none;
+}
+
+.narrativeBtn {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: auto;
+    color: #fff;
+    height: auto;
+    border: 0px solid #2166ac;
+    border-radius: 2px;
+    background: #2166ac;
+    outline: 0;
+    cursor: pointer;
+}
+
+/* Visualization Menus */
+#menus {
+    margin-top:5px;
+    width: 100%;
+    height: auto;
+    max-height: 25%;
+    border: 2px solid #525252;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#trip-menus {
+    display: block;
+    padding: 5px;
+    font-size: 14px;
+}
+
+#spatial-menus {
+    display: block;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/** filters **/
+#filters {
+    margin-top: 5px;
+    width: 100%;
+    height: auto;
+    max-height: 44.1%; /* or 25 */
+    border: 2px solid #525252;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*flex: 1 1 auto;*/
+}
+
+#filter-keyword-input {
+    height: auto;
+    border-bottom: 1px dashed #252525;
+    outline: none;
+    border-radius: 0px;
+    padding: 0;
+}
+
+#filter-keyword-btn {
+    height: auto;
+    padding: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #fff;
+    background-color: #b2182b;
+    outline: 0;
+}
+
+#filter-keyword-list {
+    height: auto;
+    width: 100%;
+    overflow-y: auto;
+}
+
+#filter-keyword-svg {
+    padding-top: 5px;
+    width: 100%;
+    height: 1000px;
+    font-size: 0.9vw;
+}
+
+.vis {
+    padding: 2px;
+    width: calc(100% - 15%);
+    height: 100%;
+    float: left;
+    position: relative;
+    -webkit-transition: width 0.2s; /* Safari */
+    transition: width 0.2s;
+}
+
+#map {
+    border: 2px solid #525252;
+    border-radius: 5px;
+    width: 100%;
+    height: 60%;
+    float: left;
+    position: relative;
+}
+
+#minimap {
+    width: 25%;
+    height: 60%;
+    float: left;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* video player */
+#showcase {
+    background: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    width: 100%;
+    height: 40%;
+    float: left;
+}
+
+
+/* Sdp points views */
+.detail-view {
+    width: 0px;
+    height: 100%;
+    float: left;
+    position: relative;
+    -webkit-transition: width 0.05s; /* Safari */
+    transition: width 0.05s;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 2px;
+    font-size: 14px;
+}
+
+#sdp {
+    width: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;  
+}
+
+/* sdp toggle button */
+#sdp-toggle {
+    font-size: 12px;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    color: #f0f0f0;
+    z-index: 1000;
+    background: #525252;
+    outline: none;
+    box-shadow: 1px 0px 1px 0px #252525;
+}
+

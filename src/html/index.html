@@ -1,0 +1,465 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Suphanut Jamonnak">
+      <!-- Load d3.js -->
+      <script src="https://d3js.org/d3.v4.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="icon" href="">
+    <title>GeoVisuals</title>
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <div id="compare-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="compare-modal-label"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div id="compare-modal-header" class="modal-header">
+                    <div id="compare-modal-label" class="modal-title">Location Details</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="compare-modal-body" class="modal-body">
+                    <div id="compare-mode">
+                        <button type="button" id="compare-streetview-btn"><i class="fa fa-street-view"
+                                aria-hidden="true"></i> Google StreetView</button>
+                        <button type="button" id="compare-map-btn" class="pull-right"><i class="fa fa-map"
+                                aria-hidden="true"></i> Map</button>
+                    </div>
+                    <div id="compare-map"></div>
+                    <div id="compare-gsv"></div>
+                    <div id="compare-sdps"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div id="gallery-header" class="modal-header">
+                    <h5 class="modal-title" id="gallery-title">Keywords Gallery</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="gallery-body" class="modal-body">
+                    <div id="gallery-keywords"></div>
+                    <div id="gallery-images">
+                        <div id="image-options">
+                            <button type="button" id="original-btn" class="image-mode selected">
+                                Original
+                            </button>
+                            <button type="button" id="custom-btn" class="image-mode">
+                                Custom
+                            </button>
+                            <button type="button" id="grayscale-btn" class="image-mode">
+                                Grayscale
+                            </button>
+                        </div>
+                        <div id="image-filter" class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="control-label"><strong>Group By:&nbsp;&nbsp;</font></strong></label>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-check-input" type="radio" name="gallery-groupBy" value="date"
+                                    checked>
+                                <label class="form-check-label">Dates</label>
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="form-group">
+                                <input class="form-check-input" type="radio" name="gallery-groupBy" value="street">
+                                <label class="form-check-label">Streets</label>
+                            </div>
+                        </div>
+                        <div id="images-container"></div>
+                    </div>
+                    <div id="gallery-details">
+                        <div id="gallery-detail-map"></div>
+                        <div id="gallery-detail-image"></div>
+                        <!--<div id="gallery-detail-slider"> slider </div>-->
+                        <div id="gallery-detail-info"> information </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- navbar -->
+    <nav id="navbar" class="navbar fixed-top">
+        <span class="navbar-brand">
+            <span id="navbar-title"><strong>Visual Analysis</strong> on GeoMap</span>
+        </span>
+
+        <!-- analysis mode -->
+        <form id="analysis-mode" class="form-inline" role="form">
+            <div class="form-group">
+                <label class="control-label"><strong>Analysis Mode:&nbsp;&nbsp;</font></strong></label>
+            </div>
+            <div class="form-group">
+                <input class="form-check-input" type="radio" name="mode" id="trip-mode" value="trip" checked>
+                <label class="form-check-label" for="trip-mode">Trip</label>
+            </div>
+            &nbsp;&nbsp;
+            <div class="form-group">
+                <input class="form-check-input" type="radio" name="mode" id="spatial-mode" value="spatial">
+                <label class="form-check-label" for="spatial-mode">Spatial</label>
+            </div>
+            &nbsp;&nbsp;
+        </form>
+    </nav>
+
+    <div class="main">
+
+
+        <div class="data">
+
+            <div id="dataset">
+                <div class="data-header">Dataset</div>
+                <div id="dataset-content" class="data-body"></div>
+            </div>
+
+            <!-- dynamic hide on trip mode -->
+            <div id="units">
+                <div class="data-header">Spatial Units</div>
+                <div id="units-content" class="data-body">
+
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label class="control-label"><strong>Type:&nbsp;&nbsp;</font></strong></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" name="units" id="street-units" value="street"
+                                checked>
+                            <label class="form-check-label" for="street-units">Street</label>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" name="units" id="region-units" value="region">
+                            <label class="form-check-label" for="region-units">Region</label>
+                        </div>
+
+                    </form>
+
+                    <div id="units-controller">
+                        <div id="units-controller-header">
+                            Region size:
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="grid-distance">
+                        <div id="units-controller-value">&nbsp;0 miles</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="rois">
+                <div id="roi-header" class="data-header">Roi Header</div>
+                <div id="rois-content" class="data-body"></div>
+            </div>
+
+            <!-- visualization panel -->
+            <div id="menus">
+                <div class="data-header">Analytical Tools</div>
+                <div id="menus-content" class="data-body">
+                    <!-- all visualization menu -->
+                    <div id="trip-menus">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="trip-options" id="videoplayer-option"
+                                value="video" checked>
+                            <label class="form-check-label" for="videoplayer-option">
+                                Video Player
+                            </label>
+                        </div>
+                        <!--
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="trip-options" id="segnetplayer-option" value="segnet">
+                        <label class="form-check-label" for="segnetplayer-option">
+                            Segnet Player
+                        </label>
+                    </div>-->
+                    </div>
+
+                    <div id="spatial-menus">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="spatial-options"
+                                id="semanticbubble-option" value="bubble" checked>
+                            <label class="form-check-label" for="semanticbubble-option">
+                                Semantic Study
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="spatial-options" id="sentiment-option"
+                                value="sentiment">
+                            <label class="form-check-label" for="sentiment-option">
+                                Sentiment Study
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="spatial-options" id="keywordtree-option"
+                                value="tree">
+                            <label class="form-check-label" for="keywordtree-option">
+                                Keyword Tree
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--
+            <div id="video-menu" class="data-header select">Video Player</div>
+            <div id="segnet-menu" class="data-header">Segnet Player</div>
+            <div id="semantic-menu" class="data-header">Semantic Bubble</div>
+            <div id="sentiment-menu" class="data-header">Sentiment Chart</div>
+            <div id="keywordtree-menu" class="data-header">Keyword Tree</div>-->
+            </div>
+
+            <!-- filter panel -->
+            <div id="filters">
+                <div class="data-header">Keywords Filter</div>
+                <div id="filter-content" class="data-body">
+                    <div class="input-group input-group-sm">
+                        <input id="filter-keyword-input" type="text" class="form-control"
+                            placeholder="Keywords Search ...">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-default" type="button" id="filter-keyword-btn"><i
+                                    class="fa fa-search" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <div id="filter-keyword-list">
+                        <svg id="filter-keyword-svg">
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="vis">
+
+            <!-- sdp toggle button -->
+            <button type="button" id="sdp-toggle"><i class="fa fa-picture-o" aria-hidden="true"></i> DETAIL
+                VIEW</button>
+
+            <!-- map layer manager -->
+            <!--
+        <button type="button" id="layer-btn"><i class="fa fa-map" aria-hidden="true"></i></button>-->
+
+            <!--
+        <div id="layer-container">
+            <center><strong>Active Layers</strong></center>
+        </div>-->
+
+            <!-- equalizer -->
+            <!--
+        <div id="equalizer-minimap"></div>
+        <div id="equalizer"></div>
+        <div id="trip-detail-container">
+                <div id="trip-detail-date">current date</div>
+                <div id="trip-detail-time">current time</div>
+                <div id="trip-detail-street">current street</div>
+                <div id="trip-detail-map"></div>
+                <div id="trip-detail-narrative">narrative</div>
+        </div>
+        <div id="trip-wordcloud"></div>-->
+
+            <!-- sdp comparison -->
+            <!-- only in trip view -->
+            <button type="button" id="compare-btn">
+                LOCATION COMPARISON
+            </button>
+
+            <button type="button" id="addpoint-btn"> ADD POINT </button>
+
+            <!-- trip detail toggle button -->
+            <button type="button" id="trip-detail-btn">
+                NAVIGATION INLET
+            </button>
+            <div id="trip-detail-container">
+                <div id="trip-detail-date">current date</div>
+                <div id="trip-detail-time">current time</div>
+                <div id="trip-detail-street">current street</div>
+                <div id="trip-detail-map"></div>
+                <div id="trip-detail-narrative">narrative</div>
+            </div>
+            <!--<div id="trip-wordcloud"></div>-->
+
+            <button type="button" id="equalizer-btn">
+                NEARBY TRIP
+            </button>
+
+            <div id="equalizer-minimap"></div>
+            <div id="equalizer"></div>
+
+            <!-- region map layers -->
+            <div id="region-options-container">
+                <strong>Region Types:</strong><br />
+                <input type="radio" name="regionTypes" id="squareGrid-region" value="square" checked>
+                <label class="form-check-label" for="squareGrid-region">
+                    Square Cells
+                </label><br />
+                <input type="radio" name="regionTypes" id="hexGrid-region" value="hexagon">
+                <label class="form-check-label" for="hexGrid-region">
+                    Hexagon Cells
+                </label><br />
+            </div>
+
+            <div id="map">
+                <!--
+            <button type="button" id="switchMap-btn"><i class="fa fa-street-view" aria-hidden="true"></i></button>-->
+
+                <!--<button id=""></button>-->
+                <!--
+            <button type="button" id="location-menu"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
+            <button type="button" id="analytic-menu"><i class="fa fa-line-chart" aria-hidden="true"></i></button>
+            <button type="button" id="layer-menu"><i class="fa fa-eye" aria-hidden="true"></i></button>
+
+            <div id="location-content" class="map-content">
+            </div>
+            <div id="analytic-content" class="map-content"></div>
+            <div id="layer-content" class="map-content"></div>-->
+            </div>
+            <!--<div id="mapbox"></div>-->
+
+            <div id="showcase">
+
+                <!-- video player -->
+                <div id="video-player">
+                    <div id="image-leftright-container">
+                        <button id="video-leftBtn">Left1</button>
+                        <button id="video-leftrightBtn">Left + Right</button>
+                        <button id="video-rightBtn">Right</button>
+
+                    </div>
+                    <div id="image-player-container">
+
+                        <!-- <div id="video-player-options">
+                        <button type="button" id="video-flying-text"><i class="fas fa-text-width"></i></button>
+                    </div> -->
+
+                        <div>
+                            <img id="image-player-left" src="" alt="Left-side image loading">
+                        </div>
+                        <div id="video-player-middle">
+                        </div>
+
+                        <div>
+                            <img id="image-player-right" src="" alt="Right-side image loading">
+                        </div>
+
+                        <div id="data-player-container">
+                            <div id="data-player-left">
+                                
+                            </div>
+                            <div id="data-player-right">
+                                <!-- Create a div where the graph will take place -->
+                                <!-- <div id="my_dataviz"></div> -->
+                                <!-- <script>
+                                    //import {updateJSlider } from '../js/componenets/video/slider.js'
+                                    // set the dimensions and margins of the graph
+                                   // var a = require.resolve("../a.json")
+//                                    console.log("a",a);
+                                    var margin = { top: 20, right: 30, bottom: 40, left: 90 },
+                                        width = 460 - margin.left - margin.right,
+                                        height = 400 - margin.top - margin.bottom;
+
+                                    // append the svg object to the body of the page
+                                    var svg = d3.select("#my_dataviz")
+                                        .append("svg")
+                                        .attr("width", width + margin.left + margin.right)
+                                        .attr("height", height + margin.top + margin.bottom)
+                                        .append("g")
+                                        .attr("transform",
+                                            "translate(" + margin.left + "," + margin.top + ")");
+
+                                    // Parse the Data
+                                    d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function (data) {
+
+                                        // Add X axis
+                                        var x = d3.scaleLinear()
+                                            .domain([0, 13000])
+                                            .range([0, width]);
+                                        svg.append("g")
+                                            .attr("transform", "translate(0," + height + ")")
+                                            .call(d3.axisBottom(x))
+                                            .selectAll("text")
+                                            .attr("transform", "translate(-10,0)rotate(-45)")
+                                            .style("text-anchor", "end");
+
+                                        // Y axis
+                                        var y = d3.scaleBand()
+                                            .range([0, height])
+                                            .domain(data.map(function (d) { return d.Country; }))
+                                            .padding(.1);
+                                        svg.append("g")
+                                            .call(d3.axisLeft(y))
+
+                                        //Bars
+                                        svg.selectAll("myRect")
+                                            .data(data)
+                                            .enter()
+                                            .append("rect")
+                                            .attr("x", x(0))
+                                            .attr("y", function (d) { return y(d.Country); })
+                                            .attr("width", function (d) { return x(d.Value); })
+                                            .attr("height", y.bandwidth())
+                                            .attr("fill", "#69b3a2")
+                                    })
+
+                                </script> -->
+                                <!-- chart data end  -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="video-player-controller">
+                        <button type="button" id="video-playButton"><i class="fa fa-play"
+                                aria-hidden="true"></i>&nbspPlay</button>
+                        <div id="video-slider">
+                            <div id="time-handle" class="ui-slider-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- segnet video player -->
+                <div id="segnet-player">segnet player</div>
+                <div id="semantic-bubble">semantic bubble</div>
+                <div id="sentiment-chart">sentiment chart</div>
+                <div id="keyword-tree">keyword tree</div>
+            </div>
+        </div>
+
+        <div class="detail-view">
+            <div id="sdp" class="tab-pane fade in active show"></div>
+        </div>
+
+    </div>
+
+
+    <!-- additional fontawesome -->
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSb2pbuLuz-sSLyV3g7qWD3uaW9Edwr8w"></script>
+     <!-- Load d3.js -->
+     <script src="https://d3js.org/d3.v4.js"></script>
+    
+</body>
+
+</html>
+
+<!-- AIzaSyCSb2pbuLuz-sSLyV3g7qWD3uaW9Edwr8w -->

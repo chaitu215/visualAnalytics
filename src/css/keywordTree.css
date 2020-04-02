@@ -1,0 +1,203 @@
+#keyword-tree {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+}
+
+#keyword-tree-1 {
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #e0e0e0;
+    overflow: scroll;
+}
+
+#street-rank {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+#keyword-tree-detail-container {
+    width: 100%;
+    height: 100%;
+    background-color: '#000';
+    overflow-y: scroll;
+    position: relative;
+}
+
+.keyword-tree-legend {
+    font-size: 12px;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    background: #525252;
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#keyword-tree-container {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: auto;
+}
+
+.key-dot {
+    display: inline-block;
+    height: 20px;
+    margin-right: 1em;
+    width: 20px;
+    padding: 0;
+    padding-left: 10px;
+    font-size: 12px;
+}
+
+.country-name {
+    margin: 0 !important;
+}
+
+
+.keyword-level0 { background: #fb8072; }
+.keyword-level1 { background: #80b1d3; }
+.keyword-level2 { background: #fdb462; }
+.keyword-level3 { background: #b3de69; }
+
+.keywordtree-slider {
+  -webkit-appearance: none;
+    width: 100% !important;
+    height: 100%;
+    background: #fb6a4a;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    float: left;
+    margin-top: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.keywordtree-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+    border: none;
+    height: 24px;
+    width: 24px;
+    background: goldenrod;
+    background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+    margin-top: -3px;
+    border-radius: 0 !important;
+  /*
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: goldenrod;
+  background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+  cursor: col-resize;
+  z-index: 5000;*/
+}
+
+.keywordtree-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+    border: none;
+    height: 24px;
+    width: 24px;
+    background: goldenrod;
+    background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+    margin-top: -3px;
+    border-radius: 0 !important;
+  /*
+  width: 15px;
+  height: 15px;
+  background: goldenrod;
+  background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+  cursor: col-resize;
+  z-index: 5000;*/
+}
+
+.keywordtree-slider:hover {
+  opacity: 1;
+}
+
+.keywordtree-image {
+  width: 100px;
+  height: 100px;
+}
+
+.sentiment-slider {
+  -webkit-appearance: none;
+    width: 100% !important;
+    height: 20px;
+    background: #fb6a4a;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.sentiment-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+    border: none;
+    height: 24px;
+    width: 24px;
+    background: goldenrod;
+    background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+    margin-top: -3px;
+    border-radius: 0 !important;
+  /*
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: goldenrod;
+  background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+  cursor: col-resize;
+  z-index: 5000;*/
+}
+
+.sentiment-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+    border: none;
+    height: 24px;
+    width: 24px;
+    background: goldenrod;
+    background: url('https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519717-225_ArrowLeftRight-24.png') no-repeat;
+    margin-top: -3px;
+    border-radius: 0 !important;
+  /*
+  width: 15px;
+  height: 15px;
+  background: goldenrod;
+  background: url('http://iconizer.net/files/Duesseldorf/orig/heart.png') no-repeat;
+  cursor: col-resize;
+  z-index: 5000;*/
+}
